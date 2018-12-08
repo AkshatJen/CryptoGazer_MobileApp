@@ -14,9 +14,20 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     container:{
-        width : '100%',
-        backgroundColor: '#262A4A',
-        height : '10%',
+        ...Platform.select({
+            ios:{
+                width : '100%',
+                backgroundColor: '#262A4A',
+                height : '10%',
+            }
+            ,
+            android : {
+                width : '100%',
+                height : '8%',
+                backgroundColor: 'white',
+            }
+        }),
+        
     },
     headerContainer:{
         display : "flex",
@@ -28,16 +39,25 @@ const styles = StyleSheet.create({
               width : '100%' ,
             },
             android:{
-              marginTop : 20,
+              marginTop : 25,
             },
       
       
           })
     },
-    header:{
-        fontSize : 20,
-        fontWeight : "bold",
-        color : "white",
+    header:{...Platform.select({
+        ios : {
+            fontSize : 20,
+            fontWeight : "bold",
+            color : "white",
+        },
+        android : {
+            fontSize : 20,
+            fontWeight : "bold",
+            color : "#262A4A",
+        }
+    }),
+
         
     }
 
