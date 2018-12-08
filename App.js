@@ -8,15 +8,20 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { Header } from './components/index.js';
+import {Provider} from 'react-redux';
+import Store from './Store';
 
+import { Header, CryptoContainer } from './components';
 
 export default class App extends Component{
   render() {
     return (
+      <Provider store={Store}>
       <View style={styles.container}>
       <Header style={styles.header}/> 
+      <CryptoContainer />
       </View>
+      </Provider>
     );
   }
 }
@@ -26,6 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
+    width: '100%'
   },
  
 });

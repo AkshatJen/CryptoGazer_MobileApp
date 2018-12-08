@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
             },
             android:{
               marginTop : 25,
+              width : '100%',
             },
       
       
