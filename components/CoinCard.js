@@ -9,12 +9,11 @@ import { images } from '../Utils/CoinIcons';
 
 const styles = StyleSheet.create({
     container: {
-        width : '100%',
-        display: "flex",
         marginBottom: 10,
         borderBottomColor: "#e5e5e5",
         borderBottomWidth: 1,
-        padding: 10
+        padding: 10,
+      //  backgroundColor : '#ccc' // to highlight the android listview issue with 100% width
     },
     upperRow: {
         display: "flex",
@@ -86,6 +85,7 @@ const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_ch
  
     
     return (
+        
         <View style={container}>
 
             <View style={upperRow}>
@@ -113,6 +113,7 @@ const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_ch
             </View>
 
         </View> 
+      
     );
 }
 

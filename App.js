@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
@@ -29,9 +21,9 @@ export default class App extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+   // alignItems: 'center',  // This caused the android scroll view width problem
     backgroundColor: 'white',
-    width: '100%'
+    width: '100%',
   },
  
 });
