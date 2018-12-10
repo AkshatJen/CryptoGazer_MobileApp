@@ -44,10 +44,13 @@ class CryptoContainer extends Component {
                 </View>
             )
         }
-
+        else
         return (
-            <ScrollView contentContainerStyle={contentContainer}>
-                {this.renderCoinCards()}
+         
+            <ScrollView contentContainerStyle={styles.contentContainer}
+                        showsVerticalScrollIndicator={false}
+                        >
+            {this.renderCoinCards()}
             </ScrollView>
         )
         
@@ -58,7 +61,7 @@ class CryptoContainer extends Component {
 const styles = {
     contentContainer: {
         paddingBottom: 0,
-        paddingTop: 5
+        paddingTop: 5,
     }
 }
 

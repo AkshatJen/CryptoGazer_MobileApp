@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
             ,
             android : {
                 width : '100%',
-                height : '8%',
                 backgroundColor: 'white',
+                height : '8%',
+                
             }
         }),
         
