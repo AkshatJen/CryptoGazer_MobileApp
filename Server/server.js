@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const http = require("http");
 const cors = require('cors');
 const app = express();
+var router = express.Router();
 
 /**
  * Enable cors middleware
@@ -20,12 +21,20 @@ app.use(cors(corsOptions));
 /**
  * Get our API routes
  */
-const api = require('./server/routes/api');
+const coinAPI = require('./routes/coinAPI');
+const authAPI = require('./routes/authAPI');
+const newsAPI = require('./routes/newsAPI');
+const sentimentAPI = require('./routes/sentimentAPI');
 
 /**
  * Set our api routes
  */
-app.use('/api', api);
+router.use('/coinAPI', coinAPI);
+router.use('/authAPI', authAPI);
+router.use('/newsAPI', newsAPI);
+router.use('/sentimentAPI', sentimentAPI);
+
+app.use('/', router);
 
 /**
  * Parser middleware for POST data
