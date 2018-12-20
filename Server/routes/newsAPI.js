@@ -4,9 +4,10 @@ const router = express.Router();
 const apiKeys = require('../APIKeys/APIKeys');
 
 /**
- * Returns all the top Crypto Headlines
+ * Returns all the top Crypto Headlines from the crypto-coins-news source
  */
-router.get('/topCryptoHeadlines', (req, res) => {
+router.get('/topCryptoCoinsNewsHeadlines', (req, res) => {
+    console.log(`News API, pulling top headlines from the crypto-coins-news source`);
     https.get(`https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
         parseResponse(resp, res);
     }).on('error', (error) => {
@@ -15,14 +16,53 @@ router.get('/topCryptoHeadlines', (req, res) => {
 });
 
 /**
- * Returns all recent Crypto Headlines
+ * Returns all recent Articles from the crypto-coins-news source
  */
-router.get('/allCryptoHeadlines', (req, res) => {
-   https.get(`https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
+router.get('/allCryptoCoinsNewsHeadlines', (req, res) => {
+    console.log(`News API, pulling all articles from the crypto-coins-news source`);
+    https.get(`https://newsapi.org/v2/everything?sources=crypto-coins-news&language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
         parseResponse(resp, res);
-   }).on('error', (error) => {
+    }).on('error', (error) => {
        console.log('Error -' + error.message);
-   });
+    });
+});
+
+/**
+ * Return articles based on a query
+ */
+router.get('/allArticlesWithQuery', (req, res) => {
+    const query = req.query.query;
+    console.log(`News API, Searching for Articles with the following Query: ${query}`);
+    https.get(`https://newsapi.org/v2/everything?q=${query}&language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
+        parseResponse(resp, res);
+    }).on('error', (error) => {
+        console.log('Error -' + error.message);
+    });
+});
+
+/**
+ * Return all named, English sources available from the News API
+ */
+router.get('/allSources', (req, res) => {
+    https.get(`https://newsapi.org/v2/sources?language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
+       parseResponse(resp, res);
+    }).on('error', (error) => {
+       console.log('Error -' + error.message);
+    });
+});
+
+/**
+ * Return articles based on a query, from specified sources
+ */
+router.get('/allArticlesWithQueryFromSpecificSources', (req, res) => {
+    const query = req.query.query;
+    const sources = req.query.sources;
+    console.log(`News API, Searching for Articles with the following Query: ${query}, from these sources: ${sources}`);
+    https.get(`https://newsapi.org/v2/everything?q=${query}&sources=${sources}&language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
+        parseResponse(resp, res);
+    }).on('error', (error) => {
+        console.log('Error -' + error.message);
+    });
 });
 
 function parseResponse(resp, res){
