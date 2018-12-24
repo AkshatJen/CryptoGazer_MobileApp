@@ -4,6 +4,18 @@ const http = require("http");
 const cors = require('cors');
 const app = express();
 var router = express.Router();
+var firebaseAdmin = require('firebase-admin');
+var serviceAccount = require('./keys/cryptoGazerFirebaseKey.json');
+
+/**
+ * Firebase Setup
+ */
+firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(serviceAccount),
+    databaseURL: 'https://crytogazer-1543085290381.firebaseio.com/'
+});
+
+exports.firebase = firebaseAdmin;
 
 /**
  * Enable cors middleware

@@ -1,7 +1,7 @@
 const express = require('express');
 const https = require('https');
 const router = express.Router();
-const apiKeys = require('../APIKeys/APIKeys');
+const apiKeys = require('../keys/APIKeys');
 
 /**
  * Returns all the top Crypto Headlines from the crypto-coins-news source
