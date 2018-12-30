@@ -15,7 +15,7 @@ firebaseAdmin.initializeApp({
     databaseURL: 'https://crytogazer-1543085290381.firebaseio.com/'
 });
 
-exports.firebase = firebaseAdmin;
+module.exports.firebase = firebaseAdmin;
 
 /**
  * Enable cors middleware
