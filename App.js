@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Store from './Store';
+import FlatListExample from './components/FlatListExample';
 
 import { Header, CryptoContainer } from './components';
 
@@ -12,6 +13,7 @@ export default class App extends Component{
       <View style={styles.container}>
       <Header style={styles.header}/> 
       <CryptoContainer />
+      {/*<FlatListExample /> */}
       </View>
       </Provider>
     );

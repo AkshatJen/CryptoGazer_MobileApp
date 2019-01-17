@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, FlatList } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import FetchCoinData from './../Actions/FetchCoinData';
 import CoinCard from './CoinCard';
 
 class CryptoContainer extends Component {
+    constructor(props){
+        super(props)
+    }
 
     componentWillMount() {
         this.props.FetchCoinData();
     }
 
     renderCoinCards() {
+<<<<<<< Updated upstream
         const { crypto } = this.props;
         return crypto.data.map((coin) =>
             <CoinCard
+=======
+<<<<<<< HEAD
+
+        const {crypto } = this.props;
+        return crypto.data.map((coin) => 
+            <CoinCard 
+=======
+        const { crypto } = this.props;
+        return crypto.data.map((coin) =>
+            <CoinCard
+>>>>>>> master
+>>>>>>> Stashed changes
                 key={coin.name}
                 coin_name={coin.name}
                 symbol={coin.symbol}
@@ -47,11 +63,13 @@ class CryptoContainer extends Component {
         else
         return (
          
-            <ScrollView contentContainerStyle={styles.contentContainer}
+           <ScrollView contentContainerStyle={styles.contentContainer}
                         showsVerticalScrollIndicator={false}
                         >
             {this.renderCoinCards()}
-            </ScrollView>
+            </ScrollView> 
+
+            
         )
         
 
@@ -60,7 +78,7 @@ class CryptoContainer extends Component {
 
 const styles = {
     contentContainer: {
-        paddingBottom: 0,
+        paddingBottom: 200,
         paddingTop: 5,
     }
 }

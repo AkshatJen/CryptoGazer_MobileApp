@@ -12,7 +12,15 @@ export default function FetchCoinData() {
 
         dispatch({ type: FETCHING_COIN_DATA })
 
+<<<<<<< Updated upstream
         return axios.get(`${apiBaseURL}/coinAPI/coins`)
+=======
+<<<<<<< HEAD
+        return axios.get(`${apiBaseURL}/v1/ticker/?limit=50`)
+=======
+        return axios.get(`${apiBaseURL}/coinAPI/coins`)
+>>>>>>> master
+>>>>>>> Stashed changes
             .then(res => {
                 return dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: res.data });
             })
