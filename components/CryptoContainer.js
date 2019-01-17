@@ -16,22 +16,10 @@ class CryptoContainer extends Component {
     }
 
     renderCoinCards() {
-<<<<<<< Updated upstream
-        const { crypto } = this.props;
-        return crypto.data.map((coin) =>
-            <CoinCard
-=======
-<<<<<<< HEAD
 
-        const {crypto } = this.props;
-        return crypto.data.map((coin) => 
-            <CoinCard 
-=======
         const { crypto } = this.props;
         return crypto.data.map((coin) =>
             <CoinCard
->>>>>>> master
->>>>>>> Stashed changes
                 key={coin.name}
                 coin_name={coin.name}
                 symbol={coin.symbol}
