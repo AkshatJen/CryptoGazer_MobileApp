@@ -1,1 +1,1 @@
-export const apiBaseURL = 'http://10.102.11.198:3000';
+export const apiBaseURL = 'https://api.coinmarketcap.com';

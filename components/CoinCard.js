@@ -9,111 +9,111 @@ import { images } from '../Utils/CoinIcons';
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 10,
+        display: "flex",
+        marginBottom: 0,
         borderBottomColor: "#e5e5e5",
-        borderBottomWidth: 1,
-        padding: 10,
-      //  backgroundColor : '#ccc' // to highlight the android listview issue with 100% width
+        borderBottomWidth: 3,
+        padding: 10
     },
     upperRow: {
         display: "flex",
         flexDirection: "row",
-        marginBottom: 10
+        marginBottom: 5
     },
     coinSymbol: {
-        marginTop: 10,
-        marginLeft: 20,
+        marginTop: 5,
+        marginLeft: 25,
         marginRight: 5,
-        fontWeight: "bold",        
+        fontWeight: "bold",  
+        color : '#262A4A'        
     },
     coinName: {
-        marginTop: 10,
-        marginLeft: 5,
-        marginRight: 20
+        marginTop: 5,
+        marginLeft: 0,
+        color : '#262A4A'  
     },
-    seperator: {
-        marginTop: 10,
-    },
+   
     coinPrice: {
-        marginTop: 10,
+        marginTop: 5,
         marginLeft: "auto",
         marginRight: 10,
-        fontWeight: "bold",        
+        fontWeight: "bold",  
+        color : '#262A4A'      
     },
-    image: {
+     image: {
+        left : 45 ,
         width: 35,
         height: 35,
     },
     moneySymbol: {
         fontWeight: "bold",
+        color : '#262A4A'  
     },
     statisticsContainer: {
         display: "flex",
-        borderTopColor: "#FAFAFA",
-        borderTopWidth: 2,
-        padding: 10,
         flexDirection: "row",
-        justifyContent: "space-around"
+      //  borderTopColor: "#FAFAFA",
+      //  borderTopWidth: 2,
+        padding: 0,
+        
+        //justifyContent: "flex-end",
+        //justifyContent : 'space-around',
     },
+    day :{
+        marginLeft: 25,
+        color : '#262A4A'  
+    },
+    week : {
+        marginRight: 10,
+        marginLeft : 'auto',
+        color : '#262A4A'  
+    },
+
     percentChangePlus: {
-        color: "#00BFA5",
+        
+        color: "#41A235",
         fontWeight: "bold",
-        marginLeft: 5
     },
     percentChangeMinus: {
-        color: "#DD2C00",
+        color: "#D52929",
         fontWeight: "bold",
-        marginLeft: 5
+        
     }
 })
-
-const { 
-    container,
-    image,
-    moneySymbol,
-    upperRow,
-    coinSymbol,
-    coinName,
-    coinPrice,
-    statisticsContainer,
-    seperator,
-    percentChangePlus,
-    percentChangeMinus
-} = styles;
 
 const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_change_7d }) => {
  
     
     return (
-        
-        <View style={container}>
-
-            <View style={upperRow}>
-                <Image
+        <View style={styles.container}>
+             <Image
                     style={styles.image}
                     source={{ uri: images[symbol] }}
-                />
-                <Text style={coinSymbol}>{symbol}</Text>
-                <Text style={seperator}>|</Text>
-                <Text style={coinName}>{coin_name}</Text>
-                <Text style={coinPrice}>{price_usd}
-                    <Text style={moneySymbol}> $ </Text>
+                /> 
+                
+            <View style={styles.upperRow}>
+               
+                <Text style={styles.coinSymbol}>{symbol}</Text>
+                <Text style={styles.coinName}> |  {coin_name}</Text>
+                <Text style={styles.coinPrice}>{price_usd}
+                    <Text style={styles.moneySymbol}> $ </Text>
                 </Text>
+               
             </View>
 
-            <View style={statisticsContainer}>
+            <View style={styles.statisticsContainer}>
+            
 
-                <Text>24h:
-                     <Text style={percent_change_24h < 0 ? percentChangeMinus : percentChangePlus }> {percent_change_24h} % </Text>
+                <Text style={styles.day}>24h:
+                     <Text style={percent_change_24h < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {percent_change_24h} % </Text>
                 </Text>
-                <Text>7d:
-                    <Text style={percent_change_7d < 0 ? percentChangeMinus : percentChangePlus }> {percent_change_7d} % </Text>
+                <Text style={styles.week}>7d:
+                    <Text style={percent_change_7d < 0 ? styles.percentChangeMinus : styles.percentChangePlus }> {percent_change_7d} % </Text>
                 </Text>
 
             </View>
 
         </View> 
-      
     );
 }
 

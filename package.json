@@ -1,5 +1,6 @@
 {
   "name": "CryptoGazer",
+  "author": "Akshat",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -18,7 +19,9 @@
     "react-redux": "^5.1.1",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "react-native-scroll-up": "0.1.2"
+
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
