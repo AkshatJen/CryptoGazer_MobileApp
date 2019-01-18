@@ -18,8 +18,7 @@ export default function FetchCoinData() {
             })
             .catch(err => {
                 return dispatch({ type: FETCHING_COIN_DATA_FAIL, payload: err });
-            });   
-
+            });
     }
 }
 
