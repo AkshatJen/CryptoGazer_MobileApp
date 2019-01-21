@@ -8,6 +8,7 @@ const data = Array.from(Array(20))
 class FlatListExample extends React.Component {
   state = {
     visible: false,
+    newState : '',
   }
 
   handleOnScroll = (event) => {
