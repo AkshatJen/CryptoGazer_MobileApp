@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import Store from './Store';
 import FlatListExample from './components/FlatListExample';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Header, CryptoContainer } from './components';
 
 
@@ -55,8 +55,8 @@ class Settings extends Component {
 
 const DashboardTabNavigator = createBottomTabNavigator(
   {
-    Feed,
     Coins,
+    Feed,
     Settings
   },
   {
