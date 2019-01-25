@@ -19,7 +19,7 @@ export default function FetchCoinData() {
         //         return dispatch({ type: FETCHING_COIN_DATA_FAIL, payload: err });
         //     });
 
-        return axios.get(`${apiBaseURL}/coinAPI/coins`)
+        axios.get(`${apiBaseURL}/coinAPI/coins`)
             .then(jsn => {
                 return dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: jsn.data });
             })
@@ -28,4 +28,3 @@ export default function FetchCoinData() {
             });
     }
 }
-
