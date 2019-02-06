@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 var router = express.Router();
 var firebaseAdmin = require('firebase-admin');
-var serviceAccount = require('./keys/cryptoGazerFirebaseKey.json');
+var serviceAccount = require('./keys/google-services.json');
 
 /**
  * Firebase Setup
