@@ -37,5 +37,8 @@ export default function(state = initialState, action) {
                 hasError: true,
                 errorMessage: action.errorMessage
             });
+
+        default:
+            return state;
     }
 }

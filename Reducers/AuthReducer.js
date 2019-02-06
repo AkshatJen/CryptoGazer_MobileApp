@@ -8,7 +8,7 @@ import {
     FACEBOOK_SIGNIN,
     FACEBOOK_SIGNIN_SUCCESS,
     FACEBOOK_SIGNIN_FAIL
-} from 'Utils/ActionTypes'
+} from './../Utils/ActionTypes'
 
 const initialState = {
     isRegistering: false,
@@ -90,5 +90,8 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, {
 
             });
+
+        default:
+            return state;
     }
 }
