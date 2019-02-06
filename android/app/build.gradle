@@ -137,9 +137,11 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-facebook-login')
     implementation project(':react-native-firebase')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
