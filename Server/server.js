@@ -34,6 +34,13 @@ let corsOptions = {
 app.use(cors(corsOptions));
 
 /**
+ * Parser middleware for POST data
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.raw());
+
+/**
  * Get our API routes
  */
 const coinAPI = require('./routes/coinAPI');
@@ -50,12 +57,6 @@ router.use('/newsAPI', newsAPI);
 router.use('/sentimentAPI', sentimentAPI);
 
 app.use('/', router);
-
-/**
- * Parser middleware for POST data
- */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * Get port from environment and store in Express.

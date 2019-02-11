@@ -6,6 +6,7 @@ import FlatListExample from './components/FlatListExample';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Header, CryptoContainer } from './components';
+import LoginForm from "./components/AccountForm";
 
 
 
@@ -53,11 +54,22 @@ class Settings extends Component {
   }
 }
 
+class Account extends Component {
+  render() {
+    return (
+        <Provider store={Store}>
+            <LoginForm/>
+        </Provider>
+    );
+  }
+}
+
 const DashboardTabNavigator = createBottomTabNavigator(
   {
     Coins,
     Feed,
-    Settings
+    Settings,
+    Account
   },
   {
     navigationOptions: ({ navigation }) => {

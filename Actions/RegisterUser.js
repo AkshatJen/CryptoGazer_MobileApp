@@ -11,17 +11,11 @@ export default function RegisterUser(email, password){
     return dispatch => {
         dispatch({type: REGISTER_USER});
 
-        let bodyFormData = new FormData();
-
-        bodyFormData.set('email', email);
-        bodyFormData.set('password', password);
-
-        axios({
-            method: 'post',
-            url: `${apiBaseURL}/authAPI/registerNewUserAccount`,
-            data: bodyFormData,
-            config: { headers: {'Content-Type': 'multipart/form-data' }}
-        })
+        axios.post(`${apiBaseURL}/authAPI/registerNewUserAccount`,
+            {
+                email: email,
+                password: password
+            })
         .then(() => {dispatch({type: REGISTER_USER_SUCCESS});})
         .catch((error) => {dispatch({type: REGISTER_USER_FAIL, errorMsg: error});});
     };
