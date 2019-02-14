@@ -6,7 +6,7 @@ import FlatListExample from './components/FlatListExample';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Header, CryptoContainer } from './components';
-import LoginForm from "./components/AccountForm";
+import AccountPage from "./components/AccountPage";
 
 
 
@@ -58,7 +58,7 @@ class Account extends Component {
   render() {
     return (
         <Provider store={Store}>
-            <LoginForm/>
+            <AccountPage/>
         </Provider>
     );
   }

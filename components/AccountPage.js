@@ -4,60 +4,74 @@ import {Platform,
     Text,
     View,
     Image,
-    Button,
     TextInput,
     TouchableHighlight} from 'react-native';
 import connect from "react-redux/es/connect/connect";
 import RegisterUser from "./../Actions/RegisterUser";
 import RegularSignIn from "./../Actions/RegularSignIn";
-import Store from "../Store";
-import Provider from "react-redux/es/components/Provider";
+import SignUserOut from "./../Actions/SignUserOut";
+import Spinner from "react-native-loading-spinner-overlay";
+import LoginForm from "./../components/LoginForm";
 
-class LoginForm extends Component<Props> {
+class AccountPage extends Component<Props> {
 
     constructor(props){
         super(props)
     }
 
-    componentWillMount(){
-        this.props.RegisterUser("meeeeeh@bleh.com", "testingout");
+    handleLoginSubmit = (values) => {
+        this.props.RegularSignIn(values.email, values.password);
+    }
+
+    signUserOut(){
+        this.props.SignUserOut();
+    }
+
+    renderSpinner(message){
+        return (
+            <View>
+                <Spinner
+                    visible={true}
+                    textContent={`${message}...`}
+                    textStyle={{color: '#262A4A'}}
+                    animation="fade"
+                />
+            </View>
+        )
     }
 
     render() {
 
         const { auth } = this.props;
 
+        if(auth.isSigningIn){
+            this.renderSpinner("Signing In");
+        }
+        else if(auth.isRegistering){
+            this.renderSpinner("Registering");
+        }
+        else if(auth.isSigningOut){
+            this.renderSpinner("Signing Out");
+        }
         return (
             <View style={styles.container}>
 
                 {auth.userCredentials != null &&
                     <View>
-                        <Text>User is Logged In</Text>
+                        <Text>{auth.userCredentials.user.email} is Logged In</Text>
                     </View>
                 }
 
-                <View style={styles.container2}>
-                    <TextInput style={styles.inputs}
-                               placeholder="Email"
-                               keyboardType="email-address"
-                               underlineColorAndroid='transparent'
-                               />
-                </View>
+                <LoginForm handleFormSubmit={this.handleLoginSubmit}/>
 
-                <View style={styles.container2}>
-                    <TextInput style={styles.inputs}
-                               placeholder="Password"
-                               secureTextEntry={true}
-                               underlineColorAndroid='transparent'
-                               />
-                </View>
-
-                <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
-                    <Text style={styles.signUpText}>Sign in</Text>
-                </TouchableHighlight>
                 <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
                     <Text style={styles.signUpText}>Register</Text>
                 </TouchableHighlight>
+                {auth.userCredentials &&
+                <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.signUserOut()}>
+                    <Text style={styles.signUpText}>Logout</Text>
+                </TouchableHighlight>
+                }
             </View>
         );
     }
@@ -69,7 +83,7 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { RegisterUser, RegularSignIn })(LoginForm)
+export default connect(mapStateToProps, { RegisterUser, RegularSignIn, SignUserOut })(AccountPage)
 
 const styles = StyleSheet.create({
     container: {
