@@ -4,11 +4,21 @@ import {Provider} from 'react-redux';
 import Store from './Store';
 import FlatListExample from './components/FlatListExample';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+//import Icons from 'react-native-vector-icons/Ionicons';
 import { Header, CryptoContainer } from './components';
+import Wallet from './Screens/Wallet';
+import News from './Screens/News';
+import Article from './Screens/Article';
 import AccountPage from "./components/AccountPage";
 
-
+const Feed = createStackNavigator({
+  News: { screen: News,
+  navigationOptions: () => ({
+      headerBackTitle: `News`,
+      headerMode: 'none'
+    })},
+  ArticlePage: { screen: Article,
+  }});
 
 export default class App extends Component{
   render() {
@@ -35,7 +45,7 @@ class Coins extends Component{
   }
 }
 
-class Feed extends Component {
+/*class Feed extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -43,7 +53,7 @@ class Feed extends Component {
       </View>
     );
   }
-}
+} */
 class Settings extends Component {
   render() {
     return (
@@ -69,13 +79,16 @@ const DashboardTabNavigator = createBottomTabNavigator(
     Coins,
     Feed,
     Settings,
-    Account
+    Account,
+    Wallet
   },
   {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
-        headerTitle: routeName
+        //header : null,
+        headerTitle: routeName,
+
       };
       
     },
