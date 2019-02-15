@@ -15,17 +15,19 @@ class LoginForm extends Component<Props> {
     }
 
     renderEmailInput ({ input: { onChange, ...restInput }}) {
+
         return (
             <TextInput style={styles.inputs}
-                placeholder="Email"
-                keyboardType="email-address"
-                underlineColorAndroid='transparent'
-                onChangeText={onChange} {...restInput}
+                       placeholder="Email"
+                       keyboardType="email-address"
+                       underlineColorAndroid='transparent'
+                       onChangeText={onChange} {...restInput}
             />
         )
     }
 
     renderPasswordInput ({ input: { onChange, ...restInput }}) {
+
         return (
             <TextInput style={styles.inputs}
                        placeholder="Password"
@@ -38,7 +40,7 @@ class LoginForm extends Component<Props> {
 
     render(){
 
-        const { handleFormSubmit, handleSubmit } = this.props;
+        const { handleFormLoginSubmit, handleFormRegisterSubmit, handleSubmit } = this.props;
 
         return (
             <View>
@@ -50,8 +52,11 @@ class LoginForm extends Component<Props> {
                     <Field name="password" component={this.renderPasswordInput}/>
                 </View>
 
-                <TouchableHighlight style={[styles.buttonContainer, styles.signInButton]} onPress={handleSubmit(handleFormSubmit)}>
+                <TouchableHighlight style={[styles.buttonContainer, styles.signInButton]} onPress={handleSubmit(handleFormLoginSubmit)}>
                     <Text style={styles.signInText}>Sign in</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={[styles.buttonContainer, styles.signUpButton]} onPress={handleSubmit(handleFormRegisterSubmit)}>
+                    <Text style={styles.signUpText}>Register</Text>
                 </TouchableHighlight>
             </View>
         )
@@ -97,6 +102,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#666",
     },
     signInText: {
+        color: 'white',
+    },
+    signUpButton: {
+        backgroundColor: "#666",
+    },
+    signUpText: {
         color: 'white',
     }
 });

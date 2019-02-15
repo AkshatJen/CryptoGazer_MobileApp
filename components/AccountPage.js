@@ -21,7 +21,11 @@ class AccountPage extends Component<Props> {
 
     handleLoginSubmit = (values) => {
         this.props.RegularSignIn(values.email, values.password);
-    }
+    };
+
+    handleRegisterSubmit = (values) => {
+        this.props.RegisterUser(values.email, values.password);
+    };
 
     signUserOut(){
         this.props.SignUserOut();
@@ -56,17 +60,23 @@ class AccountPage extends Component<Props> {
         return (
             <View style={styles.container}>
 
-                {auth.userCredentials != null &&
+                {auth.hasError && auth.errorMessage != null &&
                     <View>
-                        <Text>{auth.userCredentials.user.email} is Logged In</Text>
+                        <Text>ERROR: {auth.errorMessage} ~{"\n"}</Text>
                     </View>
                 }
 
-                <LoginForm handleFormSubmit={this.handleLoginSubmit}/>
+                {auth.userCredentials != null &&
+                    <View>
+                        <Text style={styles.loggedInUserText}>{auth.userCredentials.user.email} is Logged In ~{"\n"}</Text>
+                    </View>
+                }
 
-                <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.onClickListener('sign_up')}>
-                    <Text style={styles.signUpText}>Register</Text>
-                </TouchableHighlight>
+                <LoginForm
+                    handleFormLoginSubmit={this.handleLoginSubmit}
+                    handleFormRegisterSubmit={this.handleRegisterSubmit}
+                />
+
                 {auth.userCredentials &&
                 <TouchableHighlight style={[styles.buttonContainer, styles.signupButton]} onPress={() => this.signUserOut()}>
                     <Text style={styles.signUpText}>Logout</Text>
@@ -130,5 +140,8 @@ const styles = StyleSheet.create({
     },
     signUpText: {
         color: 'white',
+    },
+    loggedInUserText: {
+        color: 'white'
     }
 });

@@ -17,6 +17,6 @@ export default function RegisterUser(email, password){
                 password: password
             })
         .then(() => {dispatch({type: REGISTER_USER_SUCCESS});})
-        .catch((error) => {dispatch({type: REGISTER_USER_FAIL, errorMsg: error});});
+        .catch(() => {dispatch({type: REGISTER_USER_FAIL, errorMsg: "Failed to register user"});});
     };
 }
