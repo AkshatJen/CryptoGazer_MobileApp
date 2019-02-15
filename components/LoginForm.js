@@ -8,6 +8,8 @@ import {Platform,
     TouchableHighlight} from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 
+const required = value => value ? undefined : 'Required';
+
 class LoginForm extends Component<Props> {
 
     constructor(props){
@@ -45,11 +47,13 @@ class LoginForm extends Component<Props> {
         return (
             <View>
                 <View style={styles.container2}>
-                    <Field name="email" component={this.renderEmailInput}/>
+                    <Field name="email"
+                           component={this.renderEmailInput}/>
                 </View>
 
                 <View style={styles.container2}>
-                    <Field name="password" component={this.renderPasswordInput}/>
+                    <Field name="password"
+                           component={this.renderPasswordInput}/>
                 </View>
 
                 <TouchableHighlight style={[styles.buttonContainer, styles.signInButton]} onPress={handleSubmit(handleFormLoginSubmit)}>
@@ -65,7 +69,13 @@ class LoginForm extends Component<Props> {
 
 // Decorate the form component
 LoginForm = reduxForm({
-    form: 'login' // a unique name for this form
+    form: 'login', // a unique name for this form
+    validate: (values) => {
+        const errors = {};
+        errors.email = !values.email ? 'Email field is required' : undefined;
+        errors.password = !values.password ? 'Password field is required' : undefined;
+        return errors;
+    }
 })(LoginForm);
 
 export default LoginForm;

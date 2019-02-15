@@ -62,7 +62,7 @@ class AccountPage extends Component<Props> {
 
                 {auth.hasError && auth.errorMessage != null &&
                     <View>
-                        <Text>ERROR: {auth.errorMessage} ~{"\n"}</Text>
+                        <Text style={styles.loggedInUserText}>ERROR: {auth.errorMessage} ~{"\n"}</Text>
                     </View>
                 }
 
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#546e7a',
+        backgroundColor: '#262A4A'
     },
     container2: {
         borderBottomColor: '#F5FCFF',
