@@ -8,23 +8,31 @@ const firebase = server.firebase;
  * Registers a new User in the pool of Users in Firebase's Authentication Service
  */
 router.post('/registerNewUserAccount', (req, res) => {
-    const newEmail = req.query.email;
-    const newPassword = req.query.password;
-    firebase.auth().createUser({
-        email: newEmail,
-        emailVerified: false,
-        password: newPassword,
-        disabled: false
-    })
-    .then(function(userRecord) {
-        console.log("Successfully created new user:", userRecord.uid);
-        res.sendStatus(200);
+    const newEmail = req.body.email;
+    const newPassword = req.body.password;
+    console.log(`Credentials:${newEmail},${newPassword}`);
 
-    })
-    .catch(function(error) {
-        console.log("Error creating new user:", error);
+    if(newEmail != null && newPassword != null) {
+        firebase.auth().createUser({
+            email: newEmail,
+            emailVerified: false,
+            password: newPassword,
+            disabled: false
+        })
+            .then(function(userRecord) {
+                console.log("Successfully created new user:", userRecord.uid);
+                res.sendStatus(200);
+
+            })
+            .catch(function(error) {
+                console.log("Error creating new user:", error);
+                res.sendStatus(500);
+            });
+    }
+    else
+    {
         res.sendStatus(500);
-    });
+    }
 });
 
 /**

@@ -12,6 +12,7 @@ router.get('/topCryptoCoinsNewsHeadlines', (req, res) => {
         parseResponse(resp, res);
     }).on('error', (error) => {
         console.log('Error -' + error.message);
+        res.sendStatus(500);
     });
 });
 
@@ -24,6 +25,7 @@ router.get('/allCryptoCoinsNewsHeadlines', (req, res) => {
         parseResponse(resp, res);
     }).on('error', (error) => {
        console.log('Error -' + error.message);
+       res.sendStatus(500);
     });
 });
 
@@ -37,6 +39,7 @@ router.get('/allArticlesWithQuery', (req, res) => {
         parseResponse(resp, res);
     }).on('error', (error) => {
         console.log('Error -' + error.message);
+        res.sendStatus(500);
     });
 });
 
@@ -48,6 +51,7 @@ router.get('/allSources', (req, res) => {
        parseResponse(resp, res);
     }).on('error', (error) => {
        console.log('Error -' + error.message);
+       res.sendStatus(500);
     });
 });
 
@@ -62,6 +66,7 @@ router.get('/allArticlesWithQueryFromSpecificSources', (req, res) => {
         parseResponse(resp, res);
     }).on('error', (error) => {
         console.log('Error -' + error.message);
+        res.sendStatus(500);
     });
 });
 
