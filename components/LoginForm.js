@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform,
+import {
     StyleSheet,
     Text,
     View,
@@ -7,8 +7,6 @@ import {Platform,
     TextInput,
     TouchableHighlight} from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-
-const required = value => value ? undefined : 'Required';
 
 class LoginForm extends Component<Props> {
 
