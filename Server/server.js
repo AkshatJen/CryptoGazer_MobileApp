@@ -12,13 +12,10 @@ var serviceAccount = require('./keys/google-services.json');
  */
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),
-    databaseURL: 'https://crytogazer-1543085290381.firebaseio.com/'
+    databaseURL: 'https://gazer-404.firebaseio.com/'
 });
 
-var db = firebaseAdmin.database();
-
 module.exports.firebase = firebaseAdmin;
-module.exports.db = db;
 
 /**
  * Enable cors middleware

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const server = require('./../server');
-const db = server.db;
+const db = server.firebase.database();
 
 router.get('/sentiments', (req, res) => {
     var ref = db.ref("coinSentiment");

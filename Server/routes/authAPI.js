@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const server = require('./../server');
 const firebase = server.firebase;
+const db = firebase.database();
 
 
 /**
@@ -119,6 +120,34 @@ router.get('/verifyClientIDToken', (req, res) => {
     .catch(function(error) {
         console.log("Error decoding ID token: " + error.message);
         res.sendStatus(500);
+    });
+});
+
+/**
+ * Returns the coin watchlist for a given username
+ */
+router.get('/returnUserWatchlist', (req, res) => {
+    var userPreferencesRef = db.ref(`userPreferences/${req.body.username}/coinWatchlist`);
+
+    userPreferencesRef.on("value", function(snapshot) {
+        res.send(snapshot.val());
+    }, function (errorObject) {
+        console.log("Error pulling User's Coin Watchlist: " + errorObject.code);
+        res.sendStatus(500);
+    });
+});
+
+/**
+ * Updates the coin watchlist for a given username
+ */
+router.post('/updateUserWatchlist', (req, res) => {
+    var userPreferencesRef = db.ref(`userPreferences/${req.body.username}`);
+    var updatedCoinWatchlist = req.body.updatedCoinWatchlist;
+
+    userPreferencesRef.set({
+        "coinWatchlist":updatedCoinWatchlist
+    }, () => {
+        res.sendStatus(200);
     });
 });
 

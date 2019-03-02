@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Store from './Store';
-import FlatListExample from './components/FlatListExample';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
-//import Icons from 'react-native-vector-icons/Ionicons';
 import { Header, CryptoContainer } from './components';
 import Wallet from './Screens/Wallet';
 import News from './Screens/News';
@@ -88,7 +86,6 @@ const DashboardTabNavigator = createBottomTabNavigator(
       return {
         //header : null,
         headerTitle: routeName,
-
       };
       
     },
