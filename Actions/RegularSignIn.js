@@ -12,6 +12,6 @@ export default function RegularSignIn(email, password){
         firebase.auth()
             .signInWithEmailAndPassword(email, password)
             .then(userCred => {return dispatch({type: REGULAR_SIGNIN_SUCCESS, userCredentials: userCred})})
-            .catch(errCode => {return dispatch({type: REGULAR_SIGNIN_FAIL, errorMsg: "Sorry, try your credential's again"})});
+            .catch(() => {return dispatch({type: REGULAR_SIGNIN_FAIL, errorMsg: "Sorry, try your credential's again"})});
     };
 }

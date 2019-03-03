@@ -10,14 +10,23 @@ import {
     FACEBOOK_SIGNIN_FAIL,
     SIGN_USER_OUT,
     SIGN_USER_OUT_FAILURE,
-    SIGN_USER_OUT_SUCCESS
+    SIGN_USER_OUT_SUCCESS,
+    RETRIEVE_USER_WATCHLIST,
+    RETRIEVE_USER_WATCHLIST_SUCCESS,
+    RETRIEVE_USER_WATCHLIST_FAIL,
+    UPDATE_USER_WATCHLIST,
+    UPDATE_USER_WATCHLIST_SUCCESS,
+    UPDATE_USER_WATCHLIST_FAIL
 } from './../Utils/ActionTypes'
 
 const initialState = {
     isRegistering: false,
     isSigningOut: false,
     isSigningIn: false,
+    isRetrievingWatchlist: false,
+    isUpdatingWatchlist: false,
     userCredentials: null,
+    userWatchlist: null,
     hasError: false,
     errorMessage: null
 };
@@ -86,6 +95,9 @@ export default function (state = initialState, action) {
                 errorMessage: action.errorMsg
             });
 
+        /*
+        / TODO - Update these dispatches when integrating a FB Login
+         */
         case FACEBOOK_SIGNIN:
             return Object.assign({}, state, {
 
@@ -127,6 +139,51 @@ export default function (state = initialState, action) {
                 userCredentials: null,
                 hasError: true,
                 errorMessage: action.errorMessage
+            });
+
+        case RETRIEVE_USER_WATCHLIST:
+            return Object.assign({}, state, {
+                isRetrievingWatchlist: true,
+                userWatchlist: null,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case RETRIEVE_USER_WATCHLIST_SUCCESS:
+            return Object.assign({}, state, {
+                isRetrievingWatchlist: false,
+                userWatchlist: action.userWatchlist,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case RETRIEVE_USER_WATCHLIST_FAIL:
+            return Object.assign({}, state, {
+                isRetrievingWatchlist: false,
+                userWatchlist: null,
+                hasError: true,
+                errorMessage: action.errorMsg
+            });
+
+        case UPDATE_USER_WATCHLIST:
+            return Object.assign({}, state, {
+                isUpdatingWatchlist: true,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case UPDATE_USER_WATCHLIST_SUCCESS:
+            return Object.assign({}, state, {
+                isUpdatingWatchlist: false,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case UPDATE_USER_WATCHLIST_FAIL:
+            return Object.assign({}, state, {
+                isUpdatingWatchlist: false,
+                hasError: true,
+                errorMessage: action.errorMsg
             });
 
         default:

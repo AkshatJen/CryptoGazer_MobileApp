@@ -14,8 +14,8 @@ export default function FetchSentimentData() {
         .then(jsn => {
             return dispatch({type: FETCHING_SENTIMENT_DATA_SUCCESS, coinSentiments: jsn});
         })
-        .catch(err => {
-            return dispatch({type: FETCHING_SENTIMENT_DATA_FAIL, errorMessage: err});
+        .catch(() => {
+            return dispatch({type: FETCHING_SENTIMENT_DATA_FAIL, errorMessage: "Failed to fetch Sentiment Data"});
         });
     }
 }

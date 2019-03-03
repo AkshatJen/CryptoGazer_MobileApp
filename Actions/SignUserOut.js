@@ -12,6 +12,6 @@ export default function SignUserOut(){
         firebase.auth()
             .signOut()
             .then(() => {return dispatch({type: SIGN_USER_OUT_SUCCESS})})
-            .catch(errCode => {return dispatch({type: SIGN_USER_OUT_FAILURE, errorMessage: errCode})});
+            .catch(() => {return dispatch({type: SIGN_USER_OUT_FAILURE, errorMessage: "Failed to Sign Out"})});
     };
 }

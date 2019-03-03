@@ -42,7 +42,7 @@ describe('News API Endpoint: allSources', function(){
 
 describe('News API Endpoint: allArticlesWithQueryFromSpecificSources', function(){
     it('should return articles that contain the given query, from the specified sources', function () {
-        checkForJsonWithArticles("allArticlesWithQuery", {query: "bitcoin"});
+        checkForJsonWithArticles("allArticlesWithQueryFromSpecificSources", {query: "bitcoin", sources: "cnn"});
     });
 });
 
@@ -59,13 +59,15 @@ function checkForJsonWithArticles(endpoint, sendInfo){
                 expect(err).to.have.status(500);
             });
     }
-    chai.request(server)
-        .get(`${baseURL}/${endpoint}`)
-        .then(function(res){
-            expect(res).to.be.json;
-            expect(res.articles).to.be.an('array');
-        })
-        .catch(function(err){
-            expect(err).to.have.status(500);
-        });
+    else{
+        chai.request(server)
+            .get(`${baseURL}/${endpoint}`)
+            .then(function(res){
+                expect(res).to.be.json;
+                expect(res.articles).to.be.an('array');
+            })
+            .catch(function(err){
+                expect(err).to.have.status(500);
+            });
+    }
 }

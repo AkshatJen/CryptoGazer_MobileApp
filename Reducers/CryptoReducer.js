@@ -36,7 +36,7 @@ export default function(state = initialState, action) {
                 isFetching: false,
                 data: action.payload,
                 hasError: true,
-                errorMessage: action.err
+                errorMessage: action.errorMessage
             });
 
     

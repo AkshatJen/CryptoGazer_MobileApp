@@ -33,7 +33,7 @@ router.get('/allCryptoCoinsNewsHeadlines', (req, res) => {
  * Return articles based on a query
  */
 router.get('/allArticlesWithQuery', (req, res) => {
-    const query = req.query.query;
+    const query = req.body.query;
     console.log(`News API, Searching for Articles with the following Query: ${query}`);
     https.get(`https://newsapi.org/v2/everything?q=${query}&language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
         parseResponse(resp, res);
@@ -47,6 +47,7 @@ router.get('/allArticlesWithQuery', (req, res) => {
  * Return all named, English sources available from the News API
  */
 router.get('/allSources', (req, res) => {
+    console.log("News API, Pulling the News Sources available from the News API");
     https.get(`https://newsapi.org/v2/sources?language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
        parseResponse(resp, res);
     }).on('error', (error) => {
@@ -59,8 +60,8 @@ router.get('/allSources', (req, res) => {
  * Return articles based on a query, from specified sources
  */
 router.get('/allArticlesWithQueryFromSpecificSources', (req, res) => {
-    const query = req.query.query;
-    const sources = req.query.sources;
+    const query = req.body.query;
+    const sources = req.body.sources;
     console.log(`News API, Searching for Articles with the following Query: ${query}, from these sources: ${sources}`);
     https.get(`https://newsapi.org/v2/everything?q=${query}&sources=${sources}&language=en&apiKey=${apiKeys.newsAPIKey}`, (resp) => {
         parseResponse(resp, res);
