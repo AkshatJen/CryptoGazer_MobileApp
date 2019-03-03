@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "872674316056",
+    "firebase_url": "https://crash-report-21b85.firebaseio.com",
+    "project_id": "crash-report-21b85",
+    "storage_bucket": "crash-report-21b85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872674316056:android:e1df49aef7d2f513",
+        "android_client_info": {
+          "package_name": "com.cryptogazer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872674316056-m1s8cnrif52q72i8u132fsclojladbc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbCYyHg5gZ-ihexzSs2GOjjtXoJSE62XM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
