@@ -1,47 +1,44 @@
 import {
-    FETCHING_COIN_DATA,
-    FETCHING_COIN_DATA_SUCCESS,
-    FETCHING_COIN_DATA_FAIL,
+    FETCHING_SENTIMENT_DATA,
+    FETCHING_SENTIMENT_DATA_SUCCESS,
+    FETCHING_SENTIMENT_DATA_FAIL,
 } from './../Utils/ActionTypes';
 
 const initialState = {
-    isFetching: null,
-    data: [],
+    isFetching: false,
+    coinSentiments: [],
     hasError: false,
-    errorMessage: null,
-};
+    errorMessage: null
+}
 
 export default function(state = initialState, action) {
+    switch(action.type){
 
-    switch(action.type) {
-
-        case FETCHING_COIN_DATA:
+        case FETCHING_SENTIMENT_DATA:
             return Object.assign({}, state, {
                 isFetching: true,
-                data: null,
+                coinSentiments: [],
                 hasError: false,
                 errorMessage: null
             });
 
-        case FETCHING_COIN_DATA_SUCCESS:
+        case FETCHING_SENTIMENT_DATA_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
-                data: action.payload,
+                coinSentiments: action.coinSentiments,
                 hasError: false,
                 errorMessage: null
             });
 
-        case FETCHING_COIN_DATA_FAIL:
+        case FETCHING_SENTIMENT_DATA_FAIL:
             return Object.assign({}, state, {
-                isFetching: false,
-                data: action.payload,
+                isFetching: true,
+                coinSentiments: [],
                 hasError: true,
                 errorMessage: action.errorMessage
             });
 
-    
         default:
             return state;
     }
-    
 }

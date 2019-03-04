@@ -138,16 +138,21 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-facebook-login')
+    implementation project(':react-native-firebase')
     compile project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    //noinspection GradleCompatible
+    implementation "com.google.firebase:firebase-auth:16.1.0"
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    implementation "com.google.firebase:firebase-core:16.0.1"
-    // Check for v11.4.2 or higher
-
     // Add dependency
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+
+    // Firebase dependencies
+    implementation "com.google.android.gms:play-services-base:16.1.0"
+    implementation "com.google.firebase:firebase-core:16.0.5"
 }
 
 // Run this once to be able to run the application with BUCK

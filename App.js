@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Store from './Store';
-import FlatListExample from './components/FlatListExample';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
-//import Icons from 'react-native-vector-icons/Ionicons';
 import { Header, CryptoContainer } from './components';
 import Wallet from './Screens/Wallet';
 import News from './Screens/News';
 import Article from './Screens/Article';
+import AccountPage from "./components/AccountPage";
 
 const Feed = createStackNavigator({
   News: { screen: News,
@@ -16,7 +15,7 @@ const Feed = createStackNavigator({
       headerBackTitle: `News`,
       headerMode: 'none'
     })},
-  ArticlePage: { screen: Article,     
+  ArticlePage: { screen: Article,
   }});
 
 export default class App extends Component{
@@ -63,10 +62,22 @@ class Settings extends Component {
   }
 }
 
+class Account extends Component {
+  render() {
+    return (
+        <Provider store={Store}>
+            <AccountPage/>
+        </Provider>
+    );
+  }
+}
+
 const DashboardTabNavigator = createBottomTabNavigator(
   {
     Coins,
     Feed,
+    Settings,
+    Account,
     Wallet
   },
   {
@@ -75,7 +86,6 @@ const DashboardTabNavigator = createBottomTabNavigator(
       return {
         //header : null,
         headerTitle: routeName,
-        
       };
       
     },

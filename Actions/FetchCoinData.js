@@ -9,17 +9,14 @@ import {
 
 export default function FetchCoinData() {
     return dispatch => {
-
         dispatch({ type: FETCHING_COIN_DATA })
 
-        return axios.get(`${apiBaseURL}/v1/ticker/?limit=25`)
+        axios.get(`${apiBaseURL}/coinAPI/coins`)
             .then(jsn => {
-                return dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: jsn.data });                
+                return dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: jsn.data });
             })
-            .catch(err => {
-                return dispatch({ type: FETCHING_COIN_DATA_FAIL, payload: err });
-            });   
-
+            .catch(() => {
+                return dispatch({ type: FETCHING_COIN_DATA_FAIL, errorMessage: "Failed to fetch coin data" });
+            });
     }
 }
-
