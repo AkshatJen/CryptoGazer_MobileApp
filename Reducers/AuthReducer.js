@@ -5,9 +5,6 @@ import {
     REGISTER_USER,
     REGISTER_USER_SUCCESS,
     REGISTER_USER_FAIL,
-    FACEBOOK_SIGNIN,
-    FACEBOOK_SIGNIN_SUCCESS,
-    FACEBOOK_SIGNIN_FAIL,
     SIGN_USER_OUT,
     SIGN_USER_OUT_FAILURE,
     SIGN_USER_OUT_SUCCESS,
@@ -16,7 +13,13 @@ import {
     RETRIEVE_USER_WATCHLIST_FAIL,
     UPDATE_USER_WATCHLIST,
     UPDATE_USER_WATCHLIST_SUCCESS,
-    UPDATE_USER_WATCHLIST_FAIL
+    UPDATE_USER_WATCHLIST_FAIL,
+    RETRIEVE_USER_COIN_NOTIFICATION_PRICES,
+    RETRIEVE_USER_COIN_NOTIFICATION_PRICES_SUCCESS,
+    RETRIEVE_USER_COIN_NOTIFICATION_PRICES_FAIL,
+    UPDATE_USER_COIN_NOTIFICATION_PRICES,
+    UPDATE_USER_COIN_NOTIFICATION_PRICES_SUCCESS,
+    UPDATE_USER_COIN_NOTIFICATION_PRICES_FAIL
 } from './../Utils/ActionTypes'
 
 const initialState = {
@@ -25,8 +28,11 @@ const initialState = {
     isSigningIn: false,
     isRetrievingWatchlist: false,
     isUpdatingWatchlist: false,
+    isRetrievingCoinNotificationPrices: false,
+    isUpdatingCoinNotificationPrices: false,
     userCredentials: null,
     userWatchlist: null,
+    userCoinNotificationPrices: null,
     hasError: false,
     errorMessage: null
 };
@@ -93,24 +99,6 @@ export default function (state = initialState, action) {
                 userCredentials: null,
                 hasError: true,
                 errorMessage: action.errorMsg
-            });
-
-        /*
-        / TODO - Update these dispatches when integrating a FB Login
-         */
-        case FACEBOOK_SIGNIN:
-            return Object.assign({}, state, {
-
-            });
-
-        case FACEBOOK_SIGNIN_SUCCESS:
-            return Object.assign({}, state, {
-
-            });
-
-        case FACEBOOK_SIGNIN_FAIL:
-            return Object.assign({}, state, {
-
             });
 
         case SIGN_USER_OUT:
@@ -182,6 +170,50 @@ export default function (state = initialState, action) {
         case UPDATE_USER_WATCHLIST_FAIL:
             return Object.assign({}, state, {
                 isUpdatingWatchlist: false,
+                hasError: true,
+                errorMessage: action.errorMsg
+            });
+
+        case RETRIEVE_USER_COIN_NOTIFICATION_PRICES:
+            return Object.assign({}, state, {
+                isRetrievingCoinNotificationPrices: true,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case RETRIEVE_USER_COIN_NOTIFICATION_PRICES_SUCCESS:
+            return Object.assign({}, state, {
+                isRetrievingCoinNotificationPrices: false,
+                userCoinNotificationPrices: action.userCoinNotificationPrices,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case RETRIEVE_USER_COIN_NOTIFICATION_PRICES_FAIL:
+            return Object.assign({}, state, {
+                isRetrievingCoinNotificationPrices: false,
+                userCoinNotificationPrices: null,
+                hasError: true,
+                errorMessage: action.errorMsg
+            });
+
+        case UPDATE_USER_COIN_NOTIFICATION_PRICES:
+            return Object.assign({}, state, {
+                isUpdatingCoinNotificationPrices: true,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case UPDATE_USER_COIN_NOTIFICATION_PRICES_SUCCESS:
+            return Object.assign({}, state, {
+                isUpdatingCoinNotificationPrices: false,
+                hasError: false,
+                errorMessage: null
+            });
+
+        case UPDATE_USER_COIN_NOTIFICATION_PRICES_FAIL:
+            return Object.assign({}, state, {
+                isUpdatingCoinNotificationPrices: false,
                 hasError: true,
                 errorMessage: action.errorMsg
             });
