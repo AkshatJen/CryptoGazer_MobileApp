@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View ,Text} from "react-native";
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryVoronoiContainer, VictoryLine, VictoryScatter } from "victory-native";
 import { RotationGestureHandler } from "react-native-gesture-handler";
 
@@ -15,7 +15,8 @@ export default class victoryChart extends React.PureComponent {
     }
     return (
       <View style={styles.container}>
-        <VictoryChart
+        <Text>Sentiment Analysis</Text>
+        <VictoryChart height = {590} width = {400}
           theme={VictoryTheme.material}
           containerComponent={
            <VictoryVoronoiContainer
@@ -24,9 +25,10 @@ export default class victoryChart extends React.PureComponent {
           }
           >
           <VictoryLine
+            interpolation = "natural"
             style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc" }
+              data: { stroke: "blue" },
+            //   parent: { border: "1px solid #ccc" }
             }}
             data = {data1}
           />
