@@ -6,11 +6,11 @@ import {
     FETCHING_SENTIMENT_DATA_FAIL,
 } from './../Utils/ActionTypes';
 
-export default function FetchSentimentData() {
+export default function FetchSentimentData(coinName) {
     return dispatch => {
         dispatch({type: FETCHING_SENTIMENT_DATA});
 
-        axios.get(`${apiBaseURL}/sentimentAPI/sentiments`)
+        axios.get(`${apiBaseURL}/sentimentAPI/coinSentiments`, {coinName: coinName})
         .then(jsn => {
             return dispatch({type: FETCHING_SENTIMENT_DATA_SUCCESS, coinSentiments: jsn});
         })
