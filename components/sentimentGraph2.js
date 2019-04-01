@@ -20,15 +20,14 @@ export default class victoryChart extends React.PureComponent {
           theme={VictoryTheme.material}
           containerComponent={
            <VictoryVoronoiContainer
-           labels={(d) => `${(d.x,d.x)}, ${(d.y,d.y)}`}
-            /> 
+           labels={(d) => `${(d.x,d.x)}, ${(d.y,d.y)}`}/> 
           }
           >
           <VictoryLine
             interpolation = "natural"
             style={{
               data: { stroke: "blue" },
-            //   parent: { border: "1px solid #ccc" }
+              parent: { border: "5px solid black" }
             }}
             data = {data1}
           />
@@ -43,6 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5fcff"
+    backgroundColor: "#F5F5F5"
   }
 });
