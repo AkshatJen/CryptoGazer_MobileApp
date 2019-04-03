@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import { StyleSheet, View } from "react-native";
+import React, { Component } from "react";
+import { View } from "react-native";
 import { connect } from 'react-redux';
 import FetchSentimentData from './../Actions/FetchSentimentData';
 import SentimentContainer from './SentimentContainer';
@@ -16,52 +16,50 @@ class SentimentGraph extends Component {
 
     renderSentimentGraph() {
         const { sentiment } = this.props;
-        
-        return sentiment.coinSentiments.map((emo) =>
-            <SentimentContainer
-                sentiment_score={emo.score}
-            />
-        ) 
+        console.log(sentiment);
+        if (sentiment.coinSentiments.data != null) {
+            let sentimentArr = [];
+            for (var key in sentiment.coinSentiments.data) {
+                if (sentiment.coinSentiments.data.hasOwnProperty(key)) {
+                    sentimentArr.push(sentiment.coinSentiments.data[key].score)
+                }
+            }
+
+            console.log("Sentiment Arr\n", sentimentArr)
+
+            return (
+                <SentimentContainer
+                    sentiment_score={sentimentArr}>
+                </SentimentContainer>
+            );
+        }
+        else {
+            return null;
+        }
+
+
+
     }
 
-
     render() {
-        // var max = 1;
-        // var min = -1;
-        // var data1 = [];
-        // // var randomnumber=Math.floor(Math.random()*11);
-        // for (var i = 1; i <= 10; i++) {
-        //   var randomnumber = (Math.random() * (max - min + 0)) + min;
-        //   data1.push(randomnumber);
-        // }
-
-        // const { sentiment } = this.props;
         return (
-            <View style={styles.container}>
-
-                {/* <VictoryChart
-                    theme={VictoryTheme.material}
-                    domainPadding={10}
-                >
-                    <VictoryBar
-                        style={{ data: { fill: "#c43a31" } }}
-                        data={this.state.sentimentScore}
-                    />
-                </VictoryChart> */}
+            <View tyle={styles.container}>
                 {this.renderSentimentGraph()}
             </View>
         );
+
     }
+
 }
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#f5fcff"
     }
-});
+}
 
 function mapStateToProps(state) {
     return {

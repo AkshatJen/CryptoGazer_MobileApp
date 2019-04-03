@@ -10,7 +10,7 @@ export default function FetchSentimentData(coinName) {
     return dispatch => {
         dispatch({type: FETCHING_SENTIMENT_DATA});
 
-        axios.get(`${apiBaseURL}/sentimentAPI/coinSentiments`, {coinName: coinName})
+        axios.get(`${apiBaseURL}/sentimentAPI/coinSentiments/${coinName}`)
         .then(jsn => {
             return dispatch({type: FETCHING_SENTIMENT_DATA_SUCCESS, coinSentiments: jsn});
         })
