@@ -21,11 +21,9 @@ class SentimentGraph extends Component {
             let sentimentArr = [];
             for (var key in sentiment.coinSentiments.data) {
                 if (sentiment.coinSentiments.data.hasOwnProperty(key)) {
-                    sentimentArr.push(sentiment.coinSentiments.data[key].score)
+                    sentimentArr.push({y:sentiment.coinSentiments.data[key].score})
                 }
             }
-
-            console.log("Sentiment Arr\n", sentimentArr)
 
             return (
                 <SentimentContainer
