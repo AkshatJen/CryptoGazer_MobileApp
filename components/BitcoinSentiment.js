@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { connect } from 'react-redux';
-import FetchSentimentData from './../Actions/FetchSentimentData';
+import FetchSentimentData from '../Actions/FetchSentimentData';
 import SentimentContainer from './SentimentContainer';
 
-class SentimentGraph extends Component {
+class BitcoinSentiment extends Component {
 
     constructor(props) {
         super(props);
@@ -68,4 +68,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { FetchSentimentData })(SentimentGraph)
+export default connect(mapStateToProps, { FetchSentimentData })(BitcoinSentiment)
