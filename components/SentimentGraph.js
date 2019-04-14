@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { connect } from 'react-redux';
 import FetchSentimentData from './../Actions/FetchSentimentData';
 import SentimentContainer from './SentimentContainer';
@@ -21,7 +21,7 @@ class SentimentGraph extends Component {
             let sentimentArr = [];
             for (var key in sentiment.coinSentiments.data) {
                 if (sentiment.coinSentiments.data.hasOwnProperty(key)) {
-                    sentimentArr.push({y:sentiment.coinSentiments.data[key].score})
+                    sentimentArr.push({ y: sentiment.coinSentiments.data[key].score })
                 }
             }
 
@@ -42,6 +42,9 @@ class SentimentGraph extends Component {
     render() {
         return (
             <View tyle={styles.container}>
+                <Text>
+                    Bitcoin Sentiments
+                </Text>
                 {this.renderSentimentGraph()}
             </View>
         );

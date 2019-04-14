@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { VictoryLine, VictoryChart, VictoryVoronoiContainer, VictoryTheme } from "victory-native";
+import { StyleSheet, View ,Text} from "react-native";
+import { VictoryLine, VictoryChart, VictoryVoronoiContainer, VictoryTheme, VictoryLabel, VictoryTooltip, VictoryScatter,VictoryGroup} from "victory-native";
 
 
 export default class SentimentContainer extends React.Component {
@@ -11,18 +11,28 @@ export default class SentimentContainer extends React.Component {
             <View>
                 <VictoryChart
                     width={400}
-                    height={750}
+                    height={650}
                     theme={VictoryTheme.material}
-                    containerComponent={
-                        <VictoryVoronoiContainer
-                            voronoiDimension="x"
-                            labels={(d) => `${d.y}`}
-                        />
-                    }>
-                    <VictoryLine
+                    containerComponent={<VictoryVoronoiContainer/>}>
+                    <VictoryGroup color="#c43a31"
+                        labels={(d) => `${d.y}`}
+                        labelComponent={
+                            <VictoryTooltip
+                                style={{fontSize:10}}
+                            />
+                        }
+                        data={sentiment_score}
+                    >
+                    <VictoryLine/>
+                    <VictoryScatter
+                        size={(d,a) => {return a ? 8:3;}}
+                    />
+                    </VictoryGroup>
+                    {/* <VictoryLine
                         interpolation="natural"
                         data={sentiment_score}
-                    />
+                        // labels={(datum) => datum.y}
+                    /> */}
                 </VictoryChart>
             </View>
         );
