@@ -8,6 +8,8 @@ import Wallet from './Screens/Wallet';
 import News from './Screens/News';
 import Article from './Screens/Article';
 import AccountPage from "./components/AccountPage";
+import BitcoinSentiment from './components/BitcoinSentiment';
+// import EthSentiments from './components/EthSentiments';
 
 const Feed = createStackNavigator({
   News: { screen: News,
@@ -52,12 +54,16 @@ class Coins extends Component{
     );
   }
 } */
-class Settings extends Component {
+class Sentiments extends Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Settings</Text>
-      </View>
+      // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      //   <Text>Settings</Text>
+      // </View>
+      <Provider store={Store}>
+        <BitcoinSentiment/>
+        {/* <EthSentiments/> */}
+      </Provider>
     );
   }
 }
@@ -76,7 +82,7 @@ const DashboardTabNavigator = createBottomTabNavigator(
   {
     Coins,
     Feed,
-    Settings,
+    Sentiments,
     Account,
     Wallet
   },
