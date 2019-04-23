@@ -5,20 +5,21 @@ import Store from './Store';
 import {createStackNavigator , createAppContainer , createBottomTabNavigator} from 'react-navigation';
 import { Header, CryptoContainer } from './components';
 import Wallet from './Screens/Wallet';
-import News from './Screens/News';
-import Article from './Screens/Article';
+// import News from './Screens/News';
+// import Article from './Screens/Article';
 import AccountPage from "./components/AccountPage";
 import BitcoinSentiment from './components/BitcoinSentiment';
+import DisplayArticles from './components/DisplayArticles';
 // import EthSentiments from './components/EthSentiments';
 
-const Feed = createStackNavigator({
-  News: { screen: News,
-  navigationOptions: () => ({
-      headerBackTitle: `News`,
-      headerMode: 'none'
-    })},
-  ArticlePage: { screen: Article,
-  }});
+// const Feed = createStackNavigator({
+//   News: { screen: News,
+//   navigationOptions: () => ({
+//       headerBackTitle: `News`,
+//       headerMode: 'none'
+//     })},
+//   ArticlePage: { screen: Article,
+//   }});
 
 export default class App extends Component{
   render() {
@@ -45,15 +46,14 @@ class Coins extends Component{
   }
 }
 
-/*class Feed extends Component {
+class Feed extends Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Feed</Text>
-      </View>
+      <DisplayArticles/>
     );
   }
-} */
+}
+
 class Sentiments extends Component {
   render() {
     return (
