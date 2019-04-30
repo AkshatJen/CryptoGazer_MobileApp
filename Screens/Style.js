@@ -7,8 +7,8 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    borderTopWidth: 2,
-    borderColor: '#ccc'
+    borderTopWidth: 1,
+    borderColor: '#EBEBEE'
   },
   imageBox: {
     flex:1,
@@ -36,23 +36,20 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginBottom: '5%',
-    marginRight: '2%',
-    marginLeft: '8%',
-    marginTop: '0%',
+    marginRight: '5%',
     
   },
   icons: {
-    width: 20,
-    height: 20,
+    flex : 1,
     marginBottom: '1%',
     marginTop: '0%',
     marginLeft : '5%',
     
   },
     textBox: {
+      flexDirection : 'column',
+      alignItems : 'flex-start',
    // alignItems: 'center',
-    //justifyContent: 'center',
-    borderColor: 'green',
+    //justifyContent: 'center'
   },
 });

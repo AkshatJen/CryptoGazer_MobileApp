@@ -4,6 +4,7 @@ import {
   Image,
   Share
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './Style';
 
@@ -36,11 +37,10 @@ export default class ShareIcon extends Component {
         <TouchableOpacity onPress={()=>{
               Share.share(shareOptions)
         }}>
-            <Image
-              source={require('./assets/upload.png')}
-              style={styles.icons}
-            />
+            <Icon name={'ios-share-alt'} size={25} color={'#262A4A'} />
           </TouchableOpacity>
       )
   }
 }
+
+// <Image source={require('./assets/upload.png')} style={styles.icons} />

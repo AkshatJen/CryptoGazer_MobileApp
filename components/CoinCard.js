@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         marginBottom: 0,
-        borderBottomColor: "#e5e5e5",
-        borderBottomWidth: 3,
+        borderBottomColor: "#EBEBEE",
+        borderBottomWidth: 1,
         padding: 10
     },
     upperRow: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     coinName: {
         marginTop: 5,
         marginLeft: 0,
-        color : '#262A4A'  
+        color : '#000'  
     },
    
     coinPrice: {
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         marginLeft: "auto",
         marginRight: 10,
         fontWeight: "bold",  
-        color : '#262A4A'      
+        color : '#000'      
     },
      image: {
         left : 45 ,
@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
     },
     day :{
         marginLeft: 25,
-        color : '#262A4A'  
+        color : '#000'  
     },
     week : {
         marginRight: 10,
         marginLeft : 'auto',
-        color : '#262A4A'  
+        color : '#000'  
     },
 
     percentChangePlus: {
